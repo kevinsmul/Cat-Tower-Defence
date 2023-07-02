@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
         Vector2 direction = (target.position - transform.position).normalized;
         rb.velocity = direction * bulletSpeed;
     }
-
+    // TODO: if the bullet does not hit anything because the target is allready destroyed destroy the bullet so you dont have any loose bullets
     private void OnCollisionEnter2D(Collision2D other){
         other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);
         Destroy(gameObject);
