@@ -53,9 +53,12 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    
+    [SerializeField] private int currencyWorth = 50; // dit moet in de Health / TakeDamage function komen
     private void EnemyDestroyed()
     {
         enemiesAlive--;
+        LevelManager.main.IncreaseCurrency(currencyWorth); // dit moet in de Health / TakeDamage function komen
     }
 
     private IEnumerator StartWave()
