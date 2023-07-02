@@ -18,24 +18,19 @@ public class EnemyMovement : MonoBehaviour
         target = LevelManager.main.path[pathIndex];
     }
 
+
     // Update is called once per frame
     private void Update() {
-        if (target == null)
-        {
-            target = LevelManager.main.path[pathIndex];
-        }
-
-        if(Vector2.Distance(target.position, transform.position) <= 0.1f) {
+        if (Vector2.Distance(transform.position, target.position) < 0.1f) {
             pathIndex++;
-            target = LevelManager.main.path[pathIndex];
-
             if (pathIndex >= LevelManager.main.path.Length) {
+                EnemySpawner.onEnemyDestroy.Invoke();
                 Destroy(gameObject);
                 return;
             }
+            target = LevelManager.main.path[pathIndex];
         }
     }
-
 private void FixedUpdate() {
     Vector2 direction = (target.position - transform.position).normalized;
 
