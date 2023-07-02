@@ -45,9 +45,6 @@ public class Turret : MonoBehaviour
         if (hits.Length > 0){
             target = hits[0].transform;
         }
-        {
-            
-        }
     }
 
     private void rotateTowardsTarget() {
